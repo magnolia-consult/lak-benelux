@@ -12,6 +12,7 @@ body {
     line-height: 1.7;
     font-weight: 400;
     font-size: 0.9rem;
+    overflow-x: hidden;
 }
 
 a {
@@ -145,34 +146,89 @@ a.anchor {
     position: relative;
 }
 
-.cover .img1 {
+.carousel li {
+    position: relative;
+    display: none;
     min-height: 600px;
-    height: calc(100vh - 72px);
-    background-image: url('images/mini-lak.jpg');
+    height: calc(100vh - 80px);
+    animation: .5s ease-in-out;
+}
+
+.carousel .image {
+    width: 100%;
+    height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-filter: grayscale(.7);
     filter: grayscale(.7);
 }
 
-.i18n-guard .cover .img1 {
+.carousel .content {
+    position: relative;
+}
+
+.carousel .active {
+    display: block;
+}
+.carousel .next {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+.carousel .to-left {
+    animation-name: left;
+}
+.carousel .from-right {
+    animation-name: right;
+}
+
+@keyframes left {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes right {
+  from {
+    left: 100%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+.cover .image.mini-lak {
+    background-image: url('images/mini-lak.jpg');
+}
+.cover .image.lak-17b {
+    background-image: url('images/lak-17b.jpg');
+}
+.cover .image.lak-19 {
+    background-image: url('images/lak-19.jpg');
+}
+
+.i18n-guard .cover .image {
     height: 100vh;
 }
 
 .cover .content {
-    position: absolute;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: calc(100% - 100px);
-    bottom: 30px;
+    bottom: 110px;
     left: 50px;
     right: 50px;
     color: white;
 }
 
 .i18n-guard .cover .content {
+    position: absolute;
     flex-direction: column;
     justify-content: center;
     align-items: inherit;
